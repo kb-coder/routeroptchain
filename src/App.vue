@@ -1,30 +1,40 @@
+<script lang="ts">
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
+import '@/assets/tailwind.css'
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'App'
+})
+</script>
+
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <header>
+    <router-view
+      name="header"
+      v-slot="slotProps"
+    >
+      <transition
+        name="fade"
+        appear
+      >
+        <div id="nav">
+          <component :is="slotProps.Component" />
+        </div>
+      </transition>
+    </router-view>
+  </header>
+  <main>
+    <router-view v-slot="slotProps">
+      <transition
+        name="fade"
+        appear
+      >
+        <div class="container px-4 pt-4 h-screen overflow-auto">
+          <component :is="slotProps.Component" />
+        </div>
+      </transition>
+    </router-view>
+  </main>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
