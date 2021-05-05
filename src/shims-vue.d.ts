@@ -1,4 +1,4 @@
-import { MetaNavigation } from './router/MetaNavigation'
+// import { MetaNavigation } from './router/MetaNavigation'
 
 /* eslint-disable */
 declare module '*.vue' {
@@ -7,9 +7,10 @@ declare module '*.vue' {
   export default component
 }
 
-declare module 'vue-router' {
-  interface RouteMeta {
-    requiresAuth?: boolean,
-    navigation?: MetaNavigation
-  }
-}
+// Adding type definition for route meta fixes application
+// declare module 'vue-router' {
+//   interface RouteMeta {
+//     requiresAuth?: boolean,
+//     navigation?: MetaNavigation
+//   }
+// }
